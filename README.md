@@ -2,5 +2,4 @@
 
 * Project Manager: Raquel Azcue
 * Git Master: Bonnie Birch
-
-Team: Andrew Duong, Wilson Prevette
+* Team: Andrew Duong, Wilson Prevette
