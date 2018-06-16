@@ -10,7 +10,7 @@ App Name: __FreshAir App__
 
 Group 3 would like to create a map that searches for nearby parks and pulls the weather in that area.
 
-The user would search parks based on their locations then the app would contact the Google Maps API to find a list of parks and their ratings. Once the user selects the park, then the page expands to only show that park. The weather API will be triggered when the park is selected and the weather for that park's location will be displayed on the new page. The app would also have a comment section on the same park page where reviews and comments of the park can be made!
+The user would search for parks based on their location, then the app would contact the Google Maps API to find a list of parks and their ratings. Once the user selects the park, the page expands to only show that park. The weather API will be triggered when the park is selected and the weather for that location will be displayed on the new page. The app would also have a comment section on the same park page where reviews and comments of the park can be made!
 
 __Branches/ Tasks Breakdown:__
 
