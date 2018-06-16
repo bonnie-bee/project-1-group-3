@@ -16,15 +16,21 @@ The user would search for parks based on their location, then the app would cont
 
 __Branches/ Tasks Breakdown:__
 
-Design/Forms:  Wilson - responsible for implementing the design we have sketched out.
+Design/Forms:  Wilson 
+* implementing the design we have sketched out
 
-Weather API : Bonnie - responsible for building AJAX requests and queries for the Weather API. Will also send out Slack message to group members when the repository is updated.
+Weather API : Bonnie
+* building AJAX requests and queries for the Weather API 
+* send out Slack message to group members when the repository is updated
 
-Google Maps: Andrew - responsible for building AJAX requests and queries for the Google Maps API. 
+Google Maps: Andrew
+* building AJAX requests and queries for the Google Maps API
 
-Comments/Reviews: Raquel - responsible for creating comments sections/review sections; sections will require users to enter email in order to post reviews/comments.
+Comments/Reviews: Raquel 
+* creating comments sections/review sections
+    * sections will require users to enter email in order to post reviews/comments.
 
-API’s:
+__APIs:__
    * Weather API (the one from class)
    * Google Maps API
    
