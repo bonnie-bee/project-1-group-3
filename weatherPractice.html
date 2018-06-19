@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>~WeAtHeR~</title>
+
+
+</head>
+
+<body>
+
+    <input type="text" id="zip">
+    <button id="submit">PRESS ME</button>
+
+
+    <div class="weather"></div>
+
+
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type='text/javascript'>
+
+
+        $('#submit').on('click', function () {
+
+
+
+            const $zip = $('#zip').val()
+            const appId = 'f767baa5bb1442ef781f01bc48fa0bec';
+            const queryUrl = `https://api.openweathermap.org/data/2.5/weather?zip=77586&units=imperial&appid=${appId}`;
+            let lat = "";
+            let lon = "";
+            $.ajax({
+                url: queryUrl,
+                method: 'GET'
+            }).then(function (response) {
+                console.log()
+
+                let iconUrl0 = `http://openweathermap.org/img/w/${response.weather[0].icon}.png`
+                let iconUrl1 = `http://openweathermap.org/img/w/${response.weather[1].icon}.png`
+                let sunset = moment.unix(response.sys.sunset).format('h:mm')
+                lat = response.coord.lat;
+                lon = response.coord.lon;
+
+                const temp = $('<p id="temp">').text(`Temperature (F): ${response.main.temp}`)
+                const type = $('<p id="type">').text(`What's happening out there: ${response.weather[0].description} and ${response.weather[1].description} with ${response.main.humidity}% humidity`)
+                const icon0 = $(`<img src=${iconUrl0}>`).attr('alt', 'weather icon')
+                const icon1 = $(`<img src=${iconUrl1}>`).attr('alt', 'weather icon')
+                const sun = $('<p id="sunset">').text(`The sun will set at: ${sunset}`)
+
+                $('.weather').append(temp, type, icon0, icon1, sun)
+
+
+                
+            })
+            // const newQueryUrl = `https://http://api.openweathermap.org/data/2.5/uvi?appid=${appId}&lat=${lat}&lon=${lon}`
+            //     $.ajax({
+            //         url: newQueryUrl,
+            //         method: 'GET'
+            //     }).then(function (response) {
+            //         console.log(`uv response: ${response}`)
+
+            //     })
+
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>
