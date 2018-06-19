@@ -37,13 +37,17 @@ var database = firebase.database();
            console.log(readableTime) 
 
            //send this message to firebase......
+           //how do i create multiple firebase objects without them
+           //rewriting over one-another???
            database.ref().on("value", function(snapshot) {
                 database.ref().set({
                     comment: cmt,
                     time: readableTime
                 }) })
             //now paste the comment on the comments wall!
-
+            $("#cmtBoxContDiv").append($("<div>").append(cmt))
+            //for some reason the submit button only works once
+            //a second click results in the app crashing......
         })
 
     })
