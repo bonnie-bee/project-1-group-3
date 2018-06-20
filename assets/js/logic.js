@@ -17,8 +17,8 @@ function initAutocomplete() {
     });
 
     // Create the search box and link it to the UI element.
-    var input = document.getElementById('pac-input');
-    var search = new google.maps.places.searchBox(input);
+    var input = document.getElementById('search-input');
+    var searchBox = new google.maps.places.searchBox(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
     // Bias the SearchBox results towards current map's viewport.
