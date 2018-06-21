@@ -13,6 +13,8 @@ p {
 }
 
 #map {
+    position: absolute;
+    right: 5px;
     height: 125%;
     width: 50%;
   }
@@ -61,7 +63,6 @@ p {
     font-weight: 300;
   }
   #pac-input {
-    display: none;
     background-color: #fff;
     font-family: Roboto;
     font-size: 15px;
