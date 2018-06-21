@@ -14,7 +14,7 @@ var database = firebase.database();
     $("#selectParkBtn").on("click", function (event) {
          event.preventDefault();
 
-        $("#commentBTN").hide()
+        $("#selectParkBtn").hide()
 
         var cmtBoxContDiv = $("<div>").attr("id", "cmtBoxContDiv")
         cmtBoxContDiv.addClass("container-fluid")
@@ -26,35 +26,39 @@ var database = firebase.database();
 
         $("#divBody").append(cmtBoxContDiv)
         $("#divBody").append(inputBox)
+        $("#divBody").append($("<div id='commentDiv'>"))
+        for (x =1; x<= 5 ; x++){
+            let icon = $('<span class="icon"></span>') 
+            // let starNum = "star" + x
+            // let label = $("<label class='labelEls'>").attr("id", starNum)
+           $("#commentDiv").append("<input class='star' type='radio'>",icon)
+            }
+
         $("#divBody").append($("<div>").append(commentSubmitBtn)) 
 
-        $("#commentSubmitBtn").on("click", function (event) {
+        $(document).on("click", "#commentSubmitBtn", function (event) {
             event.preventDefault();
             var cmt = $("#commentInput").val()
             var today = new Date();
             var readableTime =  today.toDateString()
            console.log(cmt)  
            console.log(readableTime) 
-
-           //send this message to firebase......
+            //send this message to firebase......
            //how do i create multiple firebase objects without them
            //rewriting over one-another???
-           database.ref().on("value", function(snapshot) {
-                database.ref().set({
-                    comment: cmt,
-                    time: readableTime
-                }) })
+           database.ref().push({
+            comment: cmt,
+            time: readableTime
+        })
             //now paste the comment on the comments wall!
-            $("#cmtBoxContDiv").append($("<div>").append(cmt))
+            $("#cmtBoxContDiv").append($('<div class="commentz">').append(cmt))
             //for some reason the submit button only works once
             //a second click results in the app crashing......
         })
+        database.ref().on("value", function(snapshot) {
+        console.log(snapshot.val())
+        })
 
     })
-
-   
-
-
-
 
     

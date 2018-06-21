@@ -3,5 +3,50 @@
     width: 350px;
     text-align: left;
     vertical-align: text-top;
+    margin-top: 30px;
     
 }
+
+.commentz{
+    border-bottom: 1px solid grey;
+    height: 50px;
+    width: 50%;
+    text-indent: 30px;
+    margin-top: 15px
+}
+
+.star {
+
+   
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 50%  ;
+    transform: rotateY(180deg);
+}
+
+span.icon:before {
+    font-family: FontAwesome;
+    position: relative;
+    font-size: 20px;
+    content:"\f006";
+    color: goldenrod
+  } 
+
+  span.icon:after {
+    font-family: FontAwesome;
+    position: absolute;
+    font-size: 20px;
+    content:"\f005";
+    color: goldenrod;
+   
+    opacity: 0;
+    transition: .5s;
+  } 
+
+  span.icon:hover:after,
+  input:checked ~ span.icon:after {
+    opacity: 1;
+  }
+
+
