@@ -14,26 +14,38 @@
 <body>
 
     <form id="formEl" class="align-middle">
-        <div class="form-group" >
+        <div class="form-group loginDiv" >
           <label for="forUsername" >Username</label>
           <input type="email" class="form-control" id="usernameInput" aria-describedby="emailHelp" placeholder="Username">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    
         </div>
 
-        <div class="form-group">
-          <label for="forEmailPw">Password</label>
+        <div class="form-group loginDiv">
+          <label id="pwLabel" for="forEmailPw">Password</label>
           <input type="password" class="form-control" id="passwordInput" placeholder="Password">
             <br>
-        <div class="form-group showUp" id="emailDiv" >
-            <label for="forEmailInput"  class="showUp" >Email address</label>
-            <input type="email" class="form-control showUp" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email">
-            <small  id="emailHelp" class="form-text text-muted showUp">We'll never share your email with anyone else.</small>
+             <!--Note to self - I took out the class='showUp' for the label tag bc
+                 I want to test out the email/pw login; firebase doesn't have 'usernames' 
+                as a listed option for user authentication -->
+        <div class="form-group " id="emailDiv" >
+            <label for="forEmailInput"  class="" >Email address</label>
+            <input type="email" class="form-control " id="emailInput" aria-describedby="emailHelp" placeholder="Enter email">
+            <small  id="emailHelp" class="form-text text-muted ">We'll never share your email with anyone else.</small>
+            <small  id="verifyEmail" class="form-text text-muted ">Type in email to verify account</small>
           </div>
 
         </div>
         <button type="submit" class="btn btn-primary" id="signInBtn">Submit</button>
+        <button type="submit" class="btn btn-primary" id="sendEmailVerification">Submit2</button>
         <button type="submit" class="btn btn-primary" id="createLoginBtn">Sign Up</button>
       </form>
+
+      <div class="container align-middle loggedin-Div">
+          <h4 id="welcomMsg"> Welcome user:<br><p id="userWelcomeEmail"></p></h4>
+          <p id="breathe"> Breathe in some FreshAir!</p>
+          <button id="logoutBtn">Logout</button>
+
+      </div>
       
 
 
