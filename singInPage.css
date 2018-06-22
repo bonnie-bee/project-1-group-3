@@ -4,7 +4,6 @@
     padding-top: 10%;
     padding-bottom: 10px;
     margin:  auto;
-
 }
 
 .loggedin-Div{
@@ -30,4 +29,12 @@
 
   #sendEmailVerification{
     display: none; 
+  }
+
+  #resetPW{
+     background-color: transparent;
+     color: blue;
+     border: none;
+     font-size: 12px
+
   }

@@ -30,28 +30,12 @@ firebase.auth().onAuthStateChanged(function(user) {
           else {
             console.log('Email is not verified');
           }
-      // If user is signed in:
-      //The login-form should be hidden
-      //$("#formEl").hide()
-
-      //this line also needs to be hidden until I figure out how
-      //to send link for verification to email
-    //   $(".loggedin-Div").show()
-
-    //       if (user != null){
-    //         //This snippet display the welcome message!! 
-    //         //so I will block this out until it is needed
-    //                 var email =  $("#emailInput").val()
-    //                 $("#userWelcomeEmail").text(email)
-                    
-    //              }
 
     } else {
       // No user is signed in.
+      console.log('No user is signed in.')
     }
   });
-  
-
 
 
 $("#createLoginBtn").on("click", function (event) {
@@ -65,16 +49,15 @@ $("#createLoginBtn").on("click", function (event) {
 $("#signInBtn").on("click", function (event) {
     event.preventDefault();
 
- var email =  $("#emailInput").val()
- var password =  $("#passwordInput").val()
+    var email =  $("#emailInput").val()
+    var password =  $("#passwordInput").val()
 
- firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    var newLine = $("<br>")
-    // ...
-    window.alert("Error: " + errorMessage + newLine +"Error Code: " + errorCode) });
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+        
+            window.alert("Error: " + errorMessage  +"Error Code: " + errorCode) });
 
 })
 
@@ -92,7 +75,7 @@ $("#logoutBtn").on("click", function(){
 
 $("#createLoginBtn").on("click", function(){
 
-    //grab the email and password values
+    //Grab the email and password values
     var email =  $("#emailInput").val()
     var password =  $("#passwordInput").val()
     
@@ -110,7 +93,7 @@ $("#createLoginBtn").on("click", function(){
         $("#emailInput").val('')
         $("#sendEmailVerification").show()
 
-})
+    })
 
       //Code for requesting a verification email goes below:
 $("#sendEmailVerification").on("click", function(event){
@@ -118,8 +101,21 @@ $("#sendEmailVerification").on("click", function(event){
 
         firebase.auth().onAuthStateChanged(function(user) {
          user.sendEmailVerification(); 
-            console.log("on click function works")
         });
     
     
+    })
+
+$("#resetPW").on("click", function(event){
+    event.preventDefault();
+    
+        var auth = firebase.auth();
+        var email =  $("#emailInput").val()
+        
+        auth.sendPasswordResetEmail(email).then(function() {
+          // Email sent.
+        }).catch(function(error) {
+          // An error happened.
+          window.alert("Error: " + error)
+        });       
     })
