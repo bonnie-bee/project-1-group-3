@@ -105,8 +105,15 @@ $("#createLoginBtn").on("click", function(){
         $("#sendEmailVerification").show()
 
 })
-//Code for requesting a verification email goes below:
-$("#sendEmailVerification").on("click", function(){
 
+      //Code for requesting a verification email goes below:
+$("#sendEmailVerification").on("click", function(event){
+    event.preventDefault();
 
-})
+        firebase.auth().onAuthStateChanged(function(user) {
+         user.sendEmailVerification(); 
+            console.log("on click function works")
+        });
+    
+    
+    })
