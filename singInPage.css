@@ -16,6 +16,10 @@
     display: none;
 }
 
+.hideForNow{
+    display: none;
+}
+
 .showUp {
     display: none;
   }

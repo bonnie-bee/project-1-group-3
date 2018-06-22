@@ -14,25 +14,26 @@
 <body>
 
     <form id="formEl" class="align-middle">
-        <div class="form-group loginDiv" >
+        <div class="form-group hideForNow" >
           <label for="forUsername" >Username</label>
           <input type="email" class="form-control" id="usernameInput" aria-describedby="emailHelp" placeholder="Username">
     
         </div>
 
         <div class="form-group loginDiv">
-          <label id="pwLabel" for="forEmailPw">Password</label>
-          <input type="password" class="form-control" id="passwordInput" placeholder="Password">
-            <br>
-             <!--Note to self - I took out the class='showUp' for the label tag bc
+             <!--Note to self - I took out the class='hideForNow' for the label tag bc
                  I want to test out the email/pw login; firebase doesn't have 'usernames' 
                 as a listed option for user authentication -->
         <div class="form-group " id="emailDiv" >
-            <label for="forEmailInput"  class="" >Email address</label>
+            <label for="forEmailInput"  class="" >Email:</label>
             <input type="email" class="form-control " id="emailInput" aria-describedby="emailHelp" placeholder="Enter email">
             <small  id="emailHelp" class="form-text text-muted ">We'll never share your email with anyone else.</small>
             <small  id="verifyEmail" class="form-text text-muted ">Type in email to verify account</small>
           </div>
+
+        <label id="pwLabel" for="forEmailPw">Password:</label>
+          <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+         <br>
 
         </div>
         <button type="submit" class="btn btn-primary" id="signInBtn">Submit</button>
