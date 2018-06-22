@@ -16,9 +16,15 @@ var database = firebase.database();
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
 
-        var user = firebase.auth().currentUser
+       
         //The snippet below checks to see if the user's email is verified or not
         if (user.emailVerified) {
+          console.log(user.displayName)
+
+        
+            $("#formEl").hide()
+            $("#userWelcomeEmail").text(user.email)
+            $(".loggedin-Div").show()
             console.log('Email is verified');
           }
           else {
@@ -30,15 +36,15 @@ firebase.auth().onAuthStateChanged(function(user) {
 
       //this line also needs to be hidden until I figure out how
       //to send link for verification to email
-      //$(".loggedin-Div").show()
+    //   $(".loggedin-Div").show()
 
-          if (user != null){
-            //This snippet display the welcome message!! 
-            //so I will block this out until it is needed
-                    // var email =  $("#emailInput").val()
-                    // $("#userWelcomeEmail").text(email)
+    //       if (user != null){
+    //         //This snippet display the welcome message!! 
+    //         //so I will block this out until it is needed
+    //                 var email =  $("#emailInput").val()
+    //                 $("#userWelcomeEmail").text(email)
                     
-                 }
+    //              }
 
     } else {
       // No user is signed in.
