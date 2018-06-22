@@ -21,7 +21,8 @@ firebase.auth().onAuthStateChanged(function(user) {
         if (user.emailVerified) {
           console.log(user.displayName)
 
-        
+        //Hide the sign-in form if the user is logged-in
+        //Instead, show the welcome message
             $("#formEl").hide()
             $("#userWelcomeEmail").text(user.email)
             $(".loggedin-Div").show()
@@ -37,14 +38,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
   });
 
-
-$("#createLoginBtn").on("click", function (event) {
-    event.preventDefault();
-    $("#signInBtn").hide()
-    $("#createLoginBtn").text("Submit")
-    $(".showUp").show()
-
-})
 
 $("#signInBtn").on("click", function (event) {
     event.preventDefault();
@@ -73,7 +66,12 @@ $("#logoutBtn").on("click", function(){
       //});
 })
 
-$("#createLoginBtn").on("click", function(){
+//Button click that creates an account;
+$("#createLoginBtn").on("click", function(event){
+    event.preventDefault();
+    $("#signInBtn").hide()
+    $("#createLoginBtn").text("Submit")
+    $(".showUp").show()
 
     //Grab the email and password values
     var email =  $("#emailInput").val()
@@ -91,8 +89,8 @@ $("#createLoginBtn").on("click", function(){
         $("#passwordInput").hide()
         $("#verifyEmail").show()
         $("#emailInput").val('')
+        $("#newUserMsg").hide()
         $("#sendEmailVerification").show()
-
     })
 
       //Code for requesting a verification email goes below:
@@ -102,8 +100,6 @@ $("#sendEmailVerification").on("click", function(event){
         firebase.auth().onAuthStateChanged(function(user) {
          user.sendEmailVerification(); 
         });
-    
-    
     })
 
 $("#resetPW").on("click", function(event){
