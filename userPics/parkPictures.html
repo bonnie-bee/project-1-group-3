@@ -31,6 +31,7 @@
 
     <progress value="0" max="100" id="uploader">0%</progress>
     <input type="file" value="upload" id="fileButton" />
+    <div class="images"></div>
 
 
     <!-- bootstrap, jquery scripts-->
@@ -67,6 +68,7 @@
             //get file
             let file = e.target.files[0];
 
+            
             // create storage ref
             let storageRef = firebase.storage().ref(`park_image/${file.name}`);
 
@@ -83,11 +85,7 @@
                 },
 
                 function error(err) {
-
-                },
-
-                function complete() {
-
+                    console.log(error)
                 }
 
             )
@@ -96,11 +94,25 @@
 
         let storage = firebase.storage();
         let storageRef = storage.ref();
-        let imagesRef = storageRef.child('park-image');
+        let imagesRef = storageRef.child('park_image/pupper.jpg');
+        // let imagesRef = storage.refFromURL('gs://freshairp1-64c68.appspot.com/park_image')
+
         console.log(imagesRef)
 
+        // imagesRef.getMetadata().then(function(metadata){
+        //     console.log(metadata)
+        // })
+        
+   
 
+imagesRef.getDownloadURL().then(function(url) {
+  console.log(url);
+  let newImgUrl = $('<img>').attr('src', url);
+  $('.images').append(newImgUrl)
 
+}).catch(function(error){
+    console.log(error);
+})
 
 
 
