@@ -1,27 +1,75 @@
+var map;
+var infoWindow;
+var service;
+
 function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 8,
-      center: {lat: -34.397, lng: 150.644}
-    });
-    var geocoder = new google.maps.Geocoder();
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -33.867, lng: 151.206},
+    zoom: 15,
+    styles: [{
+      stylers: [{ visibility: 'simplified' }]
+    }, {
+      elementType: 'labels',
+      stylers: [{ visibility: 'off' }]
+    }]
+  });
 
-    document.getElementById('searchBtn').addEventListener('click', function(event) {
-        event.preventDefault();
-      geocodeAddress(geocoder, map);
-    });
+  infoWindow = new google.maps.InfoWindow();
+  service = new google.maps.places.PlacesService(map);
+
+  // The idle event is a debounced event, so we can query & listen without
+  // throwing too many requests at the server.
+  map.addListener('idle', performSearch);
+}
+
+document.getElementById('searchBtn').addEventListener('click', function(event) {
+    event.preventDefault();
+    performSearch();
+    console.log("works");
+})
+
+var mySearch = $()
+
+function performSearch() {
+  var request = {
+    bounds: map.getBounds(),
+    query: document.getElementById('search-input')
+  };
+  service.textSearch(request, callback);
+  console.log(query);
+}
+
+function callback(results, status) {
+  if (status !== google.maps.places.PlacesServiceStatus.OK) {
+    console.error(status);
+    return;
   }
+  for (var i = 0, result; result = results[i]; i++) {
+    addMarker(result);
+  }
+}
 
-  function geocodeAddress(geocoder, resultsMap) {
-    var address = document.getElementById('search-input').value;
-    geocoder.geocode({'address': address}, function(results, status) {
-      if (status === 'OK') {
-        resultsMap.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-          map: resultsMap,
-          position: results[0].geometry.location
-        });
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
+function addMarker(place) {
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location,
+    icon: {
+      url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
+      anchor: new google.maps.Point(10, 10),
+      scaledSize: new google.maps.Size(10, 17)
+    }
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    var request = {placeId: place.place_id};
+
+    service.getDetails(request, function(result, status) {
+      if (status !== google.maps.places.PlacesServiceStatus.OK) {
+        console.error(status);
+        return;
       }
+      infoWindow.setContent(result.name);
+      infoWindow.open(map, marker);
     });
-  }
+  });
+}
