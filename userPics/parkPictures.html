@@ -78,9 +78,14 @@
             let storageRef = firebase.storage().ref(`park_image/${file.name}`);
             let name = file.name;
 
+
+            
+
             //create databse ref and push name database
             let databaseRef = firebase.database().ref();
-            let pushToDatabase = databaseRef.push({ picName: name })
+            let pushToDatabase = databaseRef.child('park').push({ picName: name })
+
+            
 
 
             //upload file
