@@ -1,0 +1,21 @@
+#map {
+    position: absolute;
+    right: 5px;
+    height: 50%;
+    width: 50%;
+  }
+  /* Optional: Makes the sample page fill the window. */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+  }
+
+  #nav {
+      background-color: #ddffcc;
+  }
+  
+  #jumbotron {
+      background-color: #ddffcc;
+  }
