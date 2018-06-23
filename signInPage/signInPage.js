@@ -16,7 +16,9 @@ var database = firebase.database();
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
 
-       
+        //Then display the park list or the park information
+        //AND enable the comments sections once a park has been selected
+
         //The snippet below checks to see if the user's email is verified or not
         if (user.emailVerified) {
           console.log(user.displayName)
@@ -34,6 +36,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     } else {
       // No user is signed in.
+      //Then display the park list or the park information
       console.log('No user is signed in.')
     }
   });
