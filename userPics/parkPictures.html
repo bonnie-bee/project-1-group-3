@@ -20,6 +20,7 @@
 
         #uploader {
             -webkit-appearance: none;
+<<<<<<< HEAD
             width: 50%;
             margin-bottom: 10px;
         }
@@ -28,6 +29,12 @@
             width:100px;
             height: 100px;
         }
+=======
+            appearance: none;
+            width: 50%;
+            margin-bottom: 10px;
+        }
+>>>>>>> weatherWidget
     </style>
 </head>
 
@@ -36,7 +43,10 @@
 
     <progress value="0" max="100" id="uploader">0%</progress>
     <input type="file" value="upload" id="fileButton" />
+<<<<<<< HEAD
     <div class="images"></div>
+=======
+>>>>>>> weatherWidget
 
 
     <!-- bootstrap, jquery scripts-->
@@ -73,6 +83,7 @@
             //get file
             let file = e.target.files[0];
 
+<<<<<<< HEAD
 
             // create storage ref
             let storageRef = firebase.storage().ref(`park_image/${file.name}`);
@@ -86,6 +97,10 @@
             let pushToDatabase = databaseRef.child('park').push({ picName: name })
 
             
+=======
+            // create storage ref
+            let storageRef = firebase.storage().ref(`park_image/${file.name}`);
+>>>>>>> weatherWidget
 
 
             //upload file
@@ -100,6 +115,7 @@
                 },
 
                 function error(err) {
+<<<<<<< HEAD
                     console.log(error)
                 }
 
@@ -138,6 +154,22 @@
                 console.log(error);
             })
         })
+=======
+
+                },
+
+                function complete() {
+
+                }
+
+            )
+        })
+
+
+
+
+
+>>>>>>> weatherWidget
 
 
 
