@@ -26,12 +26,12 @@ var database = firebase.database();
 
         $("#divBody").append(cmtBoxContDiv)
         $("#divBody").append(inputBox)
-        $("#divBody").append($("<div id='commentDiv'>"))
+        $("#divBody").append($("<div id='starDiv'>"))
         for (x =1; x<= 5 ; x++){
             let icon = $('<span class="icon"></span>') 
             // let starNum = "star" + x
             // let label = $("<label class='labelEls'>").attr("id", starNum)
-           $("#commentDiv").append("<input class='star' type='radio'>",icon)
+           $("#starDiv").append("<input class='star' id='radioBtn' type='radio'>",icon)
             }
 
         $("#divBody").append($("<div>").append(commentSubmitBtn)) 
