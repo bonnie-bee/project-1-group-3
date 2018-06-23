@@ -23,6 +23,11 @@
             width: 50%;
             margin-bottom: 10px;
         }
+
+        img{
+            width:100px;
+            height: 100px;
+        }
     </style>
 </head>
 
@@ -68,9 +73,14 @@
             //get file
             let file = e.target.files[0];
 
-            
+
             // create storage ref
             let storageRef = firebase.storage().ref(`park_image/${file.name}`);
+            let name = file.name;
+
+            //create databse ref and push name database
+            let databaseRef = firebase.database().ref();
+            let pushToDatabase = databaseRef.push({ picName: name })
 
 
             //upload file
@@ -92,27 +102,38 @@
         })
 
 
-        let storage = firebase.storage();
-        let storageRef = storage.ref();
-        let imagesRef = storageRef.child('park_image/pupper.jpg');
-        // let imagesRef = storage.refFromURL('gs://freshairp1-64c68.appspot.com/park_image')
 
-        console.log(imagesRef)
 
-        // imagesRef.getMetadata().then(function(metadata){
-        //     console.log(metadata)
-        // })
-        
-   
 
-imagesRef.getDownloadURL().then(function(url) {
-  console.log(url);
-  let newImgUrl = $('<img>').attr('src', url);
-  $('.images').append(newImgUrl)
 
-}).catch(function(error){
-    console.log(error);
-})
+        let databaseRef = firebase.database().ref();
+
+        databaseRef.on('child_added', function (snapshot) {
+            let picName = snapshot.val().picName;
+
+            let storage = firebase.storage();
+            let storageRef = storage.ref();
+            let imagesRef = storageRef.child(`park_image/${picName}`);
+            // let imagesRef = storage.refFromURL('gs://freshairp1-64c68.appspot.com/park_image')
+
+            console.log(imagesRef)
+
+            imagesRef.getMetadata().then(function (metadata) {
+                console.log(metadata)
+            })
+
+
+
+            imagesRef.getDownloadURL().then(function (url) {
+                console.log(url);
+                let newImgUrl = $('<img>').addClass('img-fluid').attr('src', url);
+                $('.images').append(newImgUrl)
+
+            }).catch(function (error) {
+                console.log(error);
+            })
+        })
+
 
 
 
