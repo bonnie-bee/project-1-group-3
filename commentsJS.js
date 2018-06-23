@@ -46,7 +46,7 @@ var database = firebase.database();
             //send this message to firebase......
            //how do i create multiple firebase objects without them
            //rewriting over one-another???
-           database.ref().push({
+           database.ref().child('test').push({
             comment: cmt,
             time: readableTime
         })
