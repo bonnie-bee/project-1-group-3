@@ -20,22 +20,16 @@
 
         #uploader {
             -webkit-appearance: none;
-<<<<<<< HEAD
             width: 50%;
             margin-bottom: 10px;
         }
 
-        img{
-            width:100px;
+        img {
+            width: 100px;
             height: 100px;
         }
-=======
-            appearance: none;
-            width: 50%;
-            margin-bottom: 10px;
-        }
->>>>>>> weatherWidget
     </style>
+
 </head>
 
 <body>
@@ -43,10 +37,7 @@
 
     <progress value="0" max="100" id="uploader">0%</progress>
     <input type="file" value="upload" id="fileButton" />
-<<<<<<< HEAD
     <div class="images"></div>
-=======
->>>>>>> weatherWidget
 
 
     <!-- bootstrap, jquery scripts-->
@@ -83,25 +74,13 @@
             //get file
             let file = e.target.files[0];
 
-<<<<<<< HEAD
-
             // create storage ref
             let storageRef = firebase.storage().ref(`park_image/${file.name}`);
             let name = file.name;
 
-
-            
-
             //create databse ref and push name database
             let databaseRef = firebase.database().ref();
             let pushToDatabase = databaseRef.child('park').push({ picName: name })
-
-            
-=======
-            // create storage ref
-            let storageRef = firebase.storage().ref(`park_image/${file.name}`);
->>>>>>> weatherWidget
-
 
             //upload file
             let task = storageRef.put(file);
@@ -115,22 +94,17 @@
                 },
 
                 function error(err) {
-<<<<<<< HEAD
                     console.log(error)
                 }
 
             )
         })
 
-
-
-
-
-
         let databaseRef = firebase.database().ref();
 
-        databaseRef.on('child_added', function (snapshot) {
+        databaseRef.child('park').on('child_added', function (snapshot) {
             let picName = snapshot.val().picName;
+            console.log(picName)
 
             let storage = firebase.storage();
             let storageRef = storage.ref();
@@ -139,11 +113,9 @@
 
             console.log(imagesRef)
 
-            imagesRef.getMetadata().then(function (metadata) {
-                console.log(metadata)
-            })
-
-
+            // imagesRef.getMetadata().then(function (metadata) {
+            //     console.log(metadata)
+            // })
 
             imagesRef.getDownloadURL().then(function (url) {
                 console.log(url);
@@ -154,40 +126,8 @@
                 console.log(error);
             })
         })
-=======
-
-                },
-
-                function complete() {
-
-                }
-
-            )
-        })
-
-
-
-
-
->>>>>>> weatherWidget
-
-
-
-
-
 
     </script>
-
-
-
-
-
-
-
-
-
-
-
     <!-- </div> -->
 </body>
 
