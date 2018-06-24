@@ -24,11 +24,12 @@
             margin-bottom: 10px;
         }
 
-        img{
-            width:100px;
+        img {
+            width: 100px;
             height: 100px;
         }
     </style>
+
 </head>
 
 <body>
@@ -73,20 +74,13 @@
             //get file
             let file = e.target.files[0];
 
-
             // create storage ref
             let storageRef = firebase.storage().ref(`park_image/${file.name}`);
             let name = file.name;
 
-
-            
-
             //create databse ref and push name database
             let databaseRef = firebase.database().ref();
             let pushToDatabase = databaseRef.child('park').push({ picName: name })
-
-            
-
 
             //upload file
             let task = storageRef.put(file);
@@ -106,15 +100,11 @@
             )
         })
 
-
-
-
-
-
         let databaseRef = firebase.database().ref();
 
-        databaseRef.on('child_added', function (snapshot) {
+        databaseRef.child('park').on('child_added', function (snapshot) {
             let picName = snapshot.val().picName;
+            console.log(picName)
 
             let storage = firebase.storage();
             let storageRef = storage.ref();
@@ -123,11 +113,9 @@
 
             console.log(imagesRef)
 
-            imagesRef.getMetadata().then(function (metadata) {
-                console.log(metadata)
-            })
-
-
+            // imagesRef.getMetadata().then(function (metadata) {
+            //     console.log(metadata)
+            // })
 
             imagesRef.getDownloadURL().then(function (url) {
                 console.log(url);
@@ -139,23 +127,7 @@
             })
         })
 
-
-
-
-
-
     </script>
-
-
-
-
-
-
-
-
-
-
-
     <!-- </div> -->
 </body>
 
