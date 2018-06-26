@@ -1,3 +1,10 @@
+//allows for ajax call
+jQuery.ajaxPrefilter(function(options) {
+  if (options.crossDomain && jQuery.support.cors) {
+  options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+  }
+});
+var parkNames;
 var config = {
     apiKey: "AIzaSyDxPAAEU9IpAM2xXpNOzL9LUlSJh3cN9jw",
     authDomain: "freshairp1-64c68.firebaseapp.com",

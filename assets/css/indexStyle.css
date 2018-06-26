@@ -1,9 +1,4 @@
-#map {
-    position: absolute;
-    right: 5px;
-    height: 50%;
-    width: 50%;
-  }
+
   /* Optional: Makes the sample page fill the window. */
   html, body {
     height: 100%;
@@ -19,3 +14,33 @@
   #jumbotron {
       background-color: #ddffcc;
   }
+
+
+   /* Set the size of the div element that contains the map */
+#map {
+    height: 400px;  /* The height is 400 pixels */
+    width: 100%;  /* The width is the width of the web page */
+}
+
+.placesBox{
+    width: 300px;
+    height: 100px;
+    background-color: #ddffcc;
+    text-align: center;
+    vertical-align: middle;
+    border: solid 5px white;
+    border-radius: 15px;
+    padding-top: 10px;
+    }
+    
+    span{
+        content: block;
+        font-family: 'Nanum Gothic', sans-serif;
+        font-size: 10px;
+    }
+    
+    p3{
+        font-family: 'Dosis', sans-serif;
+        font-weight: bolder;
+        font-size: 16px;
+    }
