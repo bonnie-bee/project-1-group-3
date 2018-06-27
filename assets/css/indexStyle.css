@@ -4,7 +4,7 @@
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2;
+    background-color: #ddffcc;
   }
 
   #nav {
@@ -18,32 +18,45 @@
 
    /* Set the size of the div element that contains the map */
 #map {
-    height: 400px;  /* The height is 400 pixels */
+    height: 480px;  /* The height is 400 pixels */
     width: 100%;  /* The width is the width of the web page */
+    border: solid 10px #53A351;
+    border-radius: 10px;
+    
 }
 
 .placesBox{
-    width: 300px;
-    height: 100px;
+    width: 100%;
+    height: 80px;
     background-color: #ddffcc;
     text-align: center;
     vertical-align: middle;
-    border: solid 5px white;
+    border: solid 5px #53A351;
     border-radius: 15px;
     padding-top: 10px;
     cursor: pointer;
+    margin: auto;
     }
+
+.placesBox:hover{
+    background-color: #53A351;
+    cursor: pointer;
+}
+
+.placesBox:active{
+    background-color: #53A351;
+}
     
-    span{
+span{
         content: block;
         font-family: 'Nanum Gothic', sans-serif;
-        font-size: 10px;
+        font-size: 12px;
     }
     
-    p3{
+p3{
         font-family: 'Dosis', sans-serif;
         font-weight: bolder;
-        font-size: 16px;
+        font-size: 18px;
     }
 
 
@@ -77,3 +90,58 @@
     }
     
     
+.container{
+    background-color: #ddffcc;
+    min-width: 100vw;
+    height:100%;
+};
+
+.col-md-6{
+    background-color: #ddffcc;
+}
+
+p4{
+    text-align: center;
+    text-decoration: underline #53A351;
+    font-family: 'Dosis', sans-serif;
+    font-size: 20px;
+
+    
+}
+
+#list{
+    font-family: 'Dosis', sans-serif;
+    text-align: center; 
+}
+
+p10{
+    font-size: 100px
+}
+
+
+.placeDetails{
+    width:100%;
+    margin: auto;
+    text-align: center;
+    border: solid 10px  #53A351;
+    border-radius: 15px;
+
+
+}
+
+p5{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 14px;
+    text-shadow:0 0 10px #53A351
+}
+
+p6{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 14px;
+    text-shadow:0 0 10px red;
+}
+
+p7{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 14px;
+}
