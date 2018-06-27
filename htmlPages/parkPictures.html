@@ -20,22 +20,29 @@
 
         #uploader {
             -webkit-appearance: none;
+<<<<<<< HEAD:userPics/parkPictures.html
 <<<<<<< HEAD
+=======
+>>>>>>> master:htmlPages/parkPictures.html
             width: 50%;
             margin-bottom: 10px;
         }
 
-        img{
-            width:100px;
+        img {
+            width: 100px;
             height: 100px;
         }
+<<<<<<< HEAD:userPics/parkPictures.html
 =======
             appearance: none;
             width: 50%;
             margin-bottom: 10px;
         }
 >>>>>>> weatherWidget
+=======
+>>>>>>> master:htmlPages/parkPictures.html
     </style>
+
 </head>
 
 <body>
@@ -43,10 +50,14 @@
 
     <progress value="0" max="100" id="uploader">0%</progress>
     <input type="file" value="upload" id="fileButton" />
+<<<<<<< HEAD:userPics/parkPictures.html
 <<<<<<< HEAD
     <div class="images"></div>
 =======
 >>>>>>> weatherWidget
+=======
+    <div class="images"></div>
+>>>>>>> master:htmlPages/parkPictures.html
 
 
     <!-- bootstrap, jquery scripts-->
@@ -83,19 +94,20 @@
             //get file
             let file = e.target.files[0];
 
+<<<<<<< HEAD:userPics/parkPictures.html
 <<<<<<< HEAD
 
+=======
+>>>>>>> master:htmlPages/parkPictures.html
             // create storage ref
             let storageRef = firebase.storage().ref(`park_image/${file.name}`);
             let name = file.name;
-
-
-            
 
             //create databse ref and push name database
             let databaseRef = firebase.database().ref();
             let pushToDatabase = databaseRef.child('park').push({ picName: name })
 
+<<<<<<< HEAD:userPics/parkPictures.html
             
 =======
             // create storage ref
@@ -103,6 +115,8 @@
 >>>>>>> weatherWidget
 
 
+=======
+>>>>>>> master:htmlPages/parkPictures.html
             //upload file
             let task = storageRef.put(file);
 
@@ -115,22 +129,21 @@
                 },
 
                 function error(err) {
+<<<<<<< HEAD:userPics/parkPictures.html
 <<<<<<< HEAD
+=======
+>>>>>>> master:htmlPages/parkPictures.html
                     console.log(error)
                 }
 
             )
         })
 
-
-
-
-
-
         let databaseRef = firebase.database().ref();
 
-        databaseRef.on('child_added', function (snapshot) {
+        databaseRef.child('park').on('child_added', function (snapshot) {
             let picName = snapshot.val().picName;
+            console.log(picName)
 
             let storage = firebase.storage();
             let storageRef = storage.ref();
@@ -139,11 +152,9 @@
 
             console.log(imagesRef)
 
-            imagesRef.getMetadata().then(function (metadata) {
-                console.log(metadata)
-            })
-
-
+            // imagesRef.getMetadata().then(function (metadata) {
+            //     console.log(metadata)
+            // })
 
             imagesRef.getDownloadURL().then(function (url) {
                 console.log(url);
@@ -154,6 +165,7 @@
                 console.log(error);
             })
         })
+<<<<<<< HEAD:userPics/parkPictures.html
 =======
 
                 },
@@ -175,19 +187,10 @@
 
 
 
+=======
+>>>>>>> master:htmlPages/parkPictures.html
 
     </script>
-
-
-
-
-
-
-
-
-
-
-
     <!-- </div> -->
 </body>
 

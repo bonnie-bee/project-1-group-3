@@ -1,0 +1,79 @@
+
+  /* Optional: Makes the sample page fill the window. */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+  }
+
+  #nav {
+      background-color: #ddffcc;
+  }
+  
+  #jumbotron {
+      background-color: #ddffcc;
+  }
+
+
+   /* Set the size of the div element that contains the map */
+#map {
+    height: 400px;  /* The height is 400 pixels */
+    width: 100%;  /* The width is the width of the web page */
+}
+
+.placesBox{
+    width: 300px;
+    height: 100px;
+    background-color: #ddffcc;
+    text-align: center;
+    vertical-align: middle;
+    border: solid 5px white;
+    border-radius: 15px;
+    padding-top: 10px;
+    cursor: pointer;
+    }
+    
+    span{
+        content: block;
+        font-family: 'Nanum Gothic', sans-serif;
+        font-size: 10px;
+    }
+    
+    p3{
+        font-family: 'Dosis', sans-serif;
+        font-weight: bolder;
+        font-size: 16px;
+    }
+
+
+    .weatherWidget{
+        display:none;
+    }
+
+    .weatherWidgetDisplay{
+        display: initial;
+    }
+    #temperature{
+    
+        /* border: 40px black solid;
+        border-image: url(cloudBorder.png) 100;
+        border-right: none;
+        border-radius: 25%; */
+        font-size: 4em;
+        text-align: center;
+        padding-top: 1%;
+        font-family: 'Tajawal', sans-serif;
+    }
+    #weatherInfo{
+        
+        /* border: 40px black solid;
+        border-image: url(cloudBorder.png) 100;
+        border-image-repeat: round;
+        border-left: none;
+        border-radius: 25%; */
+        font-family: 'Tajawal', sans-serif;
+        text-align: center;
+    }
+    
+    

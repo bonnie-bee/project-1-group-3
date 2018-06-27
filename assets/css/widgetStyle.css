@@ -1,9 +1,9 @@
 #temperature{
     
-    border: 40px black solid;
+    /* border: 40px black solid;
     border-image: url(cloudBorder.png) 100;
     border-right: none;
-    border-radius: 25%;
+    border-radius: 25%; */
     font-size: 4em;
     text-align: center;
     padding-top: 1%;
@@ -11,11 +11,11 @@
 }
 #weatherInfo{
     
-    border: 40px black solid;
+    /* border: 40px black solid;
     border-image: url(cloudBorder.png) 100;
     border-image-repeat: round;
     border-left: none;
-    border-radius: 25%;
+    border-radius: 25%; */
     font-family: 'Tajawal', sans-serif;
 }
 
@@ -52,4 +52,10 @@ p3{
     font-family: 'Dosis', sans-serif;
     font-weight: bolder;
     font-size: 16px;
+}
+
+ /* Set the size of the div element that contains the map */
+#map {
+    height: 400px;  /* The height is 400 pixels */
+    width: 100%;  /* The width is the width of the web page */
 }
