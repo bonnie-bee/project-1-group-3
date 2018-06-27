@@ -6,7 +6,7 @@ jQuery.ajaxPrefilter(function(options) {
     }
     });
 
-
+   //set global variables 
         var parkNames;
         var placeAddress;
         var parkId;
@@ -59,7 +59,7 @@ jQuery.ajaxPrefilter(function(options) {
             console.log(lon)
             mapLon = lon;
             const newQueryUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lon}&type=park&rankby=distance&key=AIzaSyCGu6b-LXj6XspTe1FS8sNEJMqVZC7PcKo`
-            
+            //ajax call to recieve data for places for list
             $.ajax({
                  url: newQueryUrl,
                  method: 'GET'
@@ -67,21 +67,23 @@ jQuery.ajaxPrefilter(function(options) {
                 resultsLength = response.results.length
                 console.log(response)
                 $('#list').empty()
+            //for loop to create list of divs for parks
                 for (i=0; i<moreResults ; i++){
                 var placesDiv = $("<div class = 'placesdiv'>")
                 placesDiv.attr({'id':'place'+ i, 'class': 'placesBox', 'data-name': i})
                 placesDiv.html('<p3><b>' +response.results[i].name+ '<b></p3>'  + "<br>")
                 if (response.results[i].rating){
-                    placesDiv.append('<span>' + "Google Rating: " + response.results[i].rating + '</span>')
+                    placesDiv.append('<span>' + "Google Rating: " + response.results[i].rating + '/5</span>')
                 }
                 $('#list').append(placesDiv)
                 console.log(response.results[i].name)
                 parkNames = response
 
                 }
+        //Checks if list has been expanded to append more choices button
             if (moreResults===5){
             
-                $('#list').append('<br>' + '<button type="button" class="btn btn-secondary btn-lg btn-block loadMore">Load More...</button>')
+                $('#list').append('<br>' + '<button type="button" class="btn btn-outline-success btn-lg btn-block loadMore">Load More...</button>' + '<br>')
                 initMap();
             }
 
@@ -89,11 +91,11 @@ jQuery.ajaxPrefilter(function(options) {
             })
         })
 
-        
+        //listener for Back button to main list
         $(document).on("click", ".submit2", function(event){
             runSearch()
         })
-
+        //listener ro load more results
         $(document).on("click", ".loadMore", function(event){
             moreResults = resultsLength;
             runSearch()
@@ -101,7 +103,7 @@ jQuery.ajaxPrefilter(function(options) {
     
 
     
-
+    //sets listener for list of parks to open details page for specific park
     
         $(document).on('click', ".placesBox", function(event){
                 $('#list').empty()
@@ -131,12 +133,12 @@ jQuery.ajaxPrefilter(function(options) {
                     placeDetails.append('<p7>Address: ' +response2.result.formatted_address+ '</p7>' + '<br>');
                 });
 
-                
+                //if a rating exists appends rating info
                 if (parkNames.results[choice].rating){
-                        placeDetails.append('<p7>' + "Google Rating: " + parkNames.results[choice].rating + '</p7>' + '<br>')
+                        placeDetails.append('<p7>' + "Google Rating: " + parkNames.results[choice].rating + '/5</p7>' + '<br>')
                 }
                 $('#list').append(placeDetails)
-                $('#list').prepend('<button type="button" class="btn btn-secondary btn-lg btn-block submit2">Back to results</button>' + "<br>")
+                $('#list').prepend('<button type="button" class="btn btn-outline-success btn-lg btn-block submit2">Back to results</button>' + "<br>")
                 //setting new marker for specific park
                 mapLat = parkNames.results[choice].geometry.location.lat
                 mapLon = parkNames.results[choice].geometry.location.lng
@@ -144,9 +146,10 @@ jQuery.ajaxPrefilter(function(options) {
                 initMap()
                 }) 
             }
+        
 
 
-
+//function to update markers on the map
         function initMap() {
         // The location of Uluru
         var uluru = {lat: mapLat, lng: mapLon};
