@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="assets/css/indexStyle.css">
   <link rel='stylesheet' href="assets/css/signInPage.css">
+  <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Dosis%7CNanum+Gothic" rel="stylesheet">
 
 </head>
 
@@ -26,8 +28,8 @@
       <p>Find parks near you!</p>
       <nav id="nav" class="navbar navbar-nav navbar-expand-lg navbar-light navbar-toggler">
         <form class="form-inline">
-          <input class="form-control mr-sm-2" id='zip' type="search" placeholder="City or Zip Code..." aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" id="submit" type="submit">Search</button>
+          <input class="form-control mr-sm-2" id='zip' type="search" placeholder="Zip Code..." aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0 submit" id="submit" type="submit">Search</button>
         </form>
       </nav>
     </div>
@@ -55,15 +57,17 @@
         <label id="pwLabel" for="forEmailPw">Password:</label>
         <input type="password" class="form-control" id="passwordInput" placeholder="Password">
         <!-- Link to open the modal -->
-        <button type="button" class="btn btn-primary" id="resetPW"><a href="#ex1" rel="modal:open">Forgot password?</a></button>
+        <button type="button" class="btn btn-primary" id="resetPW">
+          <a href="#ex1" rel="modal:open">Forgot password?</a>
+        </button>
         <br>
 
       </div>
 
       <!-- submit buttons -->
-      <button type="submit" class="btn btn-primary" id="signInBtn">Submit</button>
-      <button type="submit" class="btn btn-primary" id="sendEmailVerification">Submit</button>
-      <button type="submit" class="btn btn-primary" id="createLoginBtn">Sign Up</button>
+      <button type="submit" class="btn btn-success" id="signInBtn">Submit</button>
+      <button type="submit" class="btn btn-success" id="sendEmailVerification">Submit</button>
+      <button type="submit" class="btn btn-success" id="createLoginBtn">Sign Up</button>
     </form>
 
     <!-- message once signed in -->
@@ -84,8 +88,8 @@
       <a href="#" rel="modal:close">Close</a>
     </div>
 
-    
-    
+
+
 
 
   </div>
@@ -94,18 +98,15 @@
   <!-- search results and map -->
 
   <div class="container">
-
     <div class="row">
       <div class="col-md-6">
-        <div id="list"></div>
+        <div id="list">
+          <p10>Get Some Fresh Air!</p10>
+        </div>
       </div>
-
       <div class="col-md-6">
         <div id="map"></div>
       </div>
-
-
-
     </div>
     <div class="row weatherWidget">
 
@@ -148,10 +149,13 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
     crossorigin="anonymous"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB23WGSpk5GXU08ByGkA6lGMwEJ8OEOXRw&callback=initMap"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <script src="assets/js/indexLogic.js"></script>
   <script src="assets/js/signInPage.js"></script>
   <script src="assets/js/logic.js"></script>
+
+
 </body>
 
 </html>
