@@ -1,17 +1,17 @@
-var config = {
-    apiKey: "AIzaSyDxPAAEU9IpAM2xXpNOzL9LUlSJh3cN9jw",
-    authDomain: "freshairp1-64c68.firebaseapp.com",
-    databaseURL: "https://freshairp1-64c68.firebaseio.com",
-    projectId: "freshairp1-64c68",
-    storageBucket: "freshairp1-64c68.appspot.com",
-    messagingSenderId: "456240610175"
-  };
-  firebase.initializeApp(config);
-var database = firebase.database();
+// var config = {
+//     apiKey: "AIzaSyDxPAAEU9IpAM2xXpNOzL9LUlSJh3cN9jw",
+//     authDomain: "freshairp1-64c68.firebaseapp.com",
+//     databaseURL: "https://freshairp1-64c68.firebaseio.com",
+//     projectId: "freshairp1-64c68",
+//     storageBucket: "freshairp1-64c68.appspot.com",
+//     messagingSenderId: "456240610175"
+//   };
+//   firebase.initializeApp(config);
+// var database = firebase.database();
 
 //Programming the comment box to appear only after a park has been selected 
 //Using a generic HTML button to simulate selection of park
-    $("#selectParkBtn").on("click", function (event) {
+    $("button.parkBtn").on("click", function (event) {
          event.preventDefault();
 
         $("#selectParkBtn").hide()
@@ -46,7 +46,7 @@ var database = firebase.database();
             //send this message to firebase......
            //how do i create multiple firebase objects without them
            //rewriting over one-another???
-           database.ref().child('test').push({
+           database.ref().child("Park-Objects/parkName:ParkBtn1/comments").push({
             comment: cmt,
             time: readableTime
         })
