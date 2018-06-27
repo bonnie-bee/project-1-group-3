@@ -18,6 +18,7 @@ jQuery.ajaxPrefilter(function(options) {
         var zoomIndex = 10;
         // submit function
         $('#submit').on('click', function (event) {
+            moreResults = 5;
             runSearch()
 
              
