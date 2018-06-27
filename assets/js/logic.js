@@ -30,10 +30,10 @@ jQuery.ajaxPrefilter(function(options) {
         // empty out the set of previous icons
         $('#icon').empty();
         //set up the ajax query for the weather api
-        const $zip = $('#zip').val()
-        console.log($zip)
+        const zip = $('#zip').val()
+        console.log(zip)
         const appId = 'f767baa5bb1442ef781f01bc48fa0bec';
-        const queryUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${$zip}&units=imperial&appid=${appId}`;
+        const queryUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&units=imperial&appid=${appId}`;
         // let lat = "";
         // let lon = "";
         $.ajax({
