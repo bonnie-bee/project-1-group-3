@@ -11,6 +11,7 @@
     crossorigin="anonymous">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
     crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="assets/css/indexStyle.css">
   <link rel='stylesheet' href="assets/css/signInPage.css">
 
@@ -53,7 +54,8 @@
         <!-- enter password -->
         <label id="pwLabel" for="forEmailPw">Password:</label>
         <input type="password" class="form-control" id="passwordInput" placeholder="Password">
-        <button type="button" class="btn btn-primary" id="resetPW">Forgot password?</button>
+        <!-- Link to open the modal -->
+        <button type="button" class="btn btn-primary" id="resetPW"><a href="#ex1" rel="modal:open">Forgot password?</a></button>
         <br>
 
       </div>
@@ -74,25 +76,57 @@
       <button id="logoutBtn">Logout</button>
     </div>
 
+
+
+    <!-- Modal HTML embedded directly into document -->
+    <div id="ex1" class="modal">
+      <p>If we have this address on file, we'll send an email with a reset link to you. </p>
+      <a href="#" rel="modal:close">Close</a>
+    </div>
+
+    
+    
+
+
   </div>
-  
+
 
   <!-- search results and map -->
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <div id="list"></div>  
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-6">
+        <div id="list"></div>
+      </div>
+
+      <div class="col-md-6">
+        <div id="map"></div>
+      </div>
+
+
+
+    </div>
+    <div class="row weatherWidget">
+
+      <div class="col-md-3" id="temperature"></div>
+      <div class="col-md-3" id="weatherInfo">
+
+        <div class="row" id="weatherType"></div>
+        <div class="row" id="icon"></div>
+        <div class="row" id="sunset"></div>
+
+
+      </div>
+
+
     </div>
 
-    <div class="col-md-6">
-      <div id="map"></div>
-    </div>
-    
+
+
+
+
   </div>
-</div>
-
-
 
 
 
@@ -107,12 +141,15 @@
 
   <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
     crossorigin="anonymous"></script>
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB23WGSpk5GXU08ByGkA6lGMwEJ8OEOXRw&callback=initMap"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB23WGSpk5GXU08ByGkA6lGMwEJ8OEOXRw&callback=initMap"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-  <script src="assets/js/indexLogic.js"></script>
   <script src="assets/js/signInPage.js"></script>
   <script src="assets/js/logic.js"></script>
 </body>

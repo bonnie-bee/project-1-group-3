@@ -50,7 +50,7 @@ $("#signInBtn").on("click", function (event) {
             var errorCode = error.code;
             var errorMessage = error.message;
         
-            window.alert("Error: " + errorMessage  +"Error Code: " + errorCode) });
+            console.log("Error: " + errorMessage  +"Error Code: " + errorCode) });
 
 })
 
@@ -82,7 +82,7 @@ $("#createLoginBtn").on("click", function(event){
         var errorCode = error.code;
         var errorMessage = error.message; 
         //Throw an alert if we 'catch' an error during the sign-up process
-        window.alert("Error: " + errorMessage + newLine +"Error Code: " + errorCode)})
+        console.log("Error: " + errorMessage + newLine +"Error Code: " + errorCode)})
         
         $("#createLoginBtn").hide()
         $("#pwLabel").hide()
@@ -112,6 +112,6 @@ $("#resetPW").on("click", function(event){
           // Email sent.
         }).catch(function(error) {
           // An error happened.
-          window.alert("Error: " + error)
+          console.log("Error: " + error)
         });       
     })

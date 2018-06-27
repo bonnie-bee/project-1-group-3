@@ -117,7 +117,10 @@ jQuery.ajaxPrefilter(function(options) {
                     mapLat = parkNames.results[choice].geometry.location.lat
                     mapLon = parkNames.results[choice].geometry.location.lng
                     initMap()
+                    $('.weatherWidget').attr('class', 'weatherWidgetDisplay');
                     })
+
+                    
 
              
         })

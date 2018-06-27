@@ -31,6 +31,7 @@
     border: solid 5px white;
     border-radius: 15px;
     padding-top: 10px;
+    cursor: pointer;
     }
     
     span{
@@ -44,3 +45,35 @@
         font-weight: bolder;
         font-size: 16px;
     }
+
+
+    .weatherWidget{
+        display:none;
+    }
+
+    .weatherWidgetDisplay{
+        display: initial;
+    }
+    #temperature{
+    
+        /* border: 40px black solid;
+        border-image: url(cloudBorder.png) 100;
+        border-right: none;
+        border-radius: 25%; */
+        font-size: 4em;
+        text-align: center;
+        padding-top: 1%;
+        font-family: 'Tajawal', sans-serif;
+    }
+    #weatherInfo{
+        
+        /* border: 40px black solid;
+        border-image: url(cloudBorder.png) 100;
+        border-image-repeat: round;
+        border-left: none;
+        border-radius: 25%; */
+        font-family: 'Tajawal', sans-serif;
+        text-align: center;
+    }
+    
+    
