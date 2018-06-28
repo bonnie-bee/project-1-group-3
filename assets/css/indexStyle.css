@@ -61,12 +61,11 @@ p3{
 
 
     .weatherWidget{
-        display:none;
+        
+        
     }
 
-    .weatherWidgetDisplay{
-        display: initial;
-    }
+    
     #temperature{
     
         /* border: 40px black solid;
@@ -76,7 +75,10 @@ p3{
         font-size: 4em;
         text-align: center;
         padding-top: 1%;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'Nanum Gothic', sans-serif;
+        border: solid 5px #53A351;
+    border-radius: 15px 15px 0px 0px;
+    border-bottom: none;
     }
     #weatherInfo{
         
@@ -85,8 +87,11 @@ p3{
         border-image-repeat: round;
         border-left: none;
         border-radius: 25%; */
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'Dosis', sans-serif;
         text-align: center;
+        border: solid 5px #53A351;
+    border-radius: 0px 0px 15px 15px;
+    border-top: none;
     }
     
     
@@ -123,7 +128,7 @@ p10{
     width:100%;
     margin: auto;
     text-align: center;
-    border: solid 10px  #53A351;
+    border: solid 5px  #53A351;
     border-radius: 15px;
 
 
