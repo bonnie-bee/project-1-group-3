@@ -141,6 +141,7 @@ $('.weatherWidget').hide();
         $(document).on("click", ".loadMore", function (event) {
             moreResults = resultsLength;
             runSearch()
+            
         })
 
 
@@ -149,6 +150,7 @@ $('.weatherWidget').hide();
 
         $(document).on('click', ".placesBox", function (event) {
             $('#list').empty()
+            $(".images").empty();
             var choice = $(event.currentTarget).data('name')
             parkId = parkNames.results[choice].place_id;
             console.log(parkId)
