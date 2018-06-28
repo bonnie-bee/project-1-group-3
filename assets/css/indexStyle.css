@@ -4,7 +4,7 @@
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #ddffcc;
+    background-color: #eafce1;
   }
 
   #nav {
@@ -13,6 +13,13 @@
   
   #jumbotron {
       background-color: #ddffcc;
+  }
+  .logo{
+      margin-left: 5%;
+  }
+
+  #signModal{
+      margin-left: 30%
   }
 
 
@@ -28,12 +35,15 @@
 .placesBox{
     width: 100%;
     height: 80px;
-    background-color: #ddffcc;
+    background-color:  #eafce1;
     text-align: center;
     vertical-align: middle;
     border: solid 5px #53A351;
+    border-top-width: 2.5px;
+    border-bottom-width: 2.5px;
     border-radius: 15px;
     padding-top: 10px;
+    cursor: pointer;
     margin: auto;
     }
 
@@ -58,14 +68,50 @@ p3{
         font-size: 18px;
     }
 
+
+    .weatherWidget{
+        display: none;
+        
+    }
+
+    
+    #temperature{
+    
+        /* border: 40px black solid;
+        border-image: url(cloudBorder.png) 100;
+        border-right: none;
+        border-radius: 25%; */
+        font-size: 4em;
+        text-align: center;
+        padding-top: 1%;
+        font-family: 'Nanum Gothic', sans-serif;
+        border: solid 5px #53A351;
+    border-radius: 15px 15px 0px 0px;
+    border-bottom: none;
+    }
+    #weatherInfo{
+        
+        /* border: 40px black solid;
+        border-image: url(cloudBorder.png) 100;
+        border-image-repeat: round;
+        border-left: none;
+        border-radius: 25%; */
+        font-family: 'Dosis', sans-serif;
+        text-align: center;
+        border: solid 5px #53A351;
+    border-radius: 0px 0px 15px 15px;
+    border-top: none;
+    }
+    
+    
 .container{
-    background-color: #ddffcc;
+    background-color: #eafce1;
     min-width: 100vw;
     height:100%;
 };
 
 .col-md-6{
-    background-color: #ddffcc;
+    background-color: #eafce1;
 }
 
 p4{
@@ -91,7 +137,7 @@ p10{
     width:100%;
     margin: auto;
     text-align: center;
-    border: solid 10px  #53A351;
+    border: solid 5px  #53A351;
     border-radius: 15px;
 
 
