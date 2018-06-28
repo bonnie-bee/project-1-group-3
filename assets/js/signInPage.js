@@ -123,7 +123,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                     cmtBoxContDiv.text("Comments:")
                     //var commentSubmitBtn = $('<button id="commentSubmitBtn">Submit</button>')
                     // var inputBox = $('<textarea type="text" placeholder="Comment here..." id="commentInput">')
-                    $("#commentDiv").append(cmtBoxContDiv)
+                    //$("#commentDiv").append(cmtBoxContDiv)
                     // $("#commentDiv").append(inputBox)
                     //$("#commentDiv").append($("<div>").append(commentSubmitBtn)) 
                     
@@ -200,10 +200,10 @@ firebase.auth().onAuthStateChanged(function(user) {
  
         // var commentSubmitBtn = $('<button id="commentSubmitBtn">Submit</button>')
  
-         var inputBox = $('<textarea type="text" placeholder="Comment here..." id="commentInput">')
+         //var inputBox = $('<textarea type="text" placeholder="Comment here..." id="commentInput">')
  
          $("#commentDiv").append(cmtBoxContDiv)
-         $("#commentDiv").append(inputBox)
+         //$("#commentDiv").append(inputBox)
          //$("#commentDiv").append($("<div>").append(commentSubmitBtn)) 
          console.log("this is the park id: " + parkId)
          
