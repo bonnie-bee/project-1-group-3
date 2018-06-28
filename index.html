@@ -24,7 +24,7 @@
   <!-- Header with map search bar -->
   <div id="jumbotron" class="jumbotron jumbotron-fluid">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4 logo">
         <h1 class="display-4">FreshAir</h1>
         <p>Find parks near you!</p>
         <nav id="nav" class="navbar navbar-nav navbar-expand-lg navbar-light navbar-toggler">
@@ -35,90 +35,106 @@
         </nav>
       </div>
       <div class="col-md-4"></div>
-      <!-- User sign up/log in -->
-      <div class="col-md-4">
-        <form id="formEl" class="align-right">
-          <!-- <div class="form-group hideForNow">
+      <!-- sign in/sign up button -->
+      <a href="#signInModal" rel="modal:open">
+        <button type="button" class="btn btn-outline-success" id="signModal">
+          Sign In | Sign Up
+        </button>
+      </a>
+    </div>
+  </div>
+
+
+
+  <!-- User sign up/log in modal-->
+  <div class="col-md-4">
+    <div id="signInModal" class="modal">
+      <form id="formEl" class="align-right">
+        <!-- <div class="form-group hideForNow">
         <label for="forUsername">Username</label>
         <input type="email" class="form-control" id="usernameInput" aria-describedby="emailHelp" placeholder="Username">
       </div> -->
-          <div class="form-group loginDiv">
-            <!--Note to self - I took out the class='hideForNow' for the label tag bc I want to test out the email/pw login; firebase doesn't have 'usernames' as a listed option for user authentication -->
+        <div class="form-group loginDiv">
+          <!--Note to self - I took out the class='hideForNow' for the label tag bc I want to test out the email/pw login; firebase doesn't have 'usernames' as a listed option for user authentication -->
 
-            <!-- enter email -->
-            <div class="form-group " id="emailDiv">
-              <label for="forEmailInput" class="">Email:</label>
-              <input type="email" class="form-control " id="emailInput" aria-describedby="emailHelp" placeholder="Enter email">
-              <small id="newUserMsg" class="form-text text-muted ">
-                <b>New Users:</b>Enter your email and create a password on
-                <i>this page</i> before clicking 'Sign Up'.</small>
-              <small id="verifyEmail" class="form-text text-muted ">Type in email to verify account</small>
-            </div>
-
-            <!-- enter password -->
-            <label id="pwLabel" for="forEmailPw">Password:</label>
-            <input type="password" class="form-control" id="passwordInput" placeholder="Password">
-            <button type="button" class="btn btn-primary" id="resetPW">Forgot password?</button>
-            <br>
-
+          <!-- enter email -->
+          <div class="form-group " id="emailDiv">
+            <label for="forEmailInput" class="">Email:</label>
+            <input type="email" class="form-control " id="emailInput" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="newUserMsg" class="form-text text-muted ">
+              <b>New Users:</b>Enter your email and create a password on
+              <i>this page</i> before clicking 'Sign Up'.</small>
+            <small id="verifyEmail" class="form-text text-muted ">Type in email to verify account</small>
           </div>
 
-          <!-- submit buttons -->
-          <button type="submit" class="btn btn-success" id="signInBtn">Submit</button>
-          <button type="submit" class="btn btn-success" id="sendEmailVerification">Submit</button>
-          <button type="submit" class="btn btn-success" id="createLoginBtn">Sign Up</button>
-        </form>
-      </div>
-
-      <!-- message once signed in -->
-      <div class="container align-middle loggedin-Div">
-        <h4 id="welcomMsg"> Welcome user:
+          <!-- enter password -->
+          <label id="pwLabel" for="forEmailPw">Password:</label>
+          <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+          <button type="button" class="btn btn-primary" id="resetPW">
+            <a href="#pwModal" rel="modal:open">Forgot password?</a>
+          </button>
           <br>
-          <p id="userWelcomeEmail"></p>
-        </h4>
-        <p id="breathe"> Breathe in some FreshAir!</p>
-        <button id="logoutBtn">Logout</button>
-      </div>
 
+        </div>
 
-
-      <!-- Modal HTML embedded directly into document -->
-      <div id="ex1" class="modal">
-        <p>If we have this address on file, we'll send an email with a reset link to you. </p>
-        <a href="#" rel="modal:close">Close</a>
-      </div>
-
-
-
-
-
+        <!-- submit buttons -->
+        <button type="submit" class="btn btn-success" id="signInBtn">Submit</button>
+        <button type="submit" class="btn btn-success" id="sendEmailVerification">Submit</button>
+        <button type="submit" class="btn btn-success" id="createLoginBtn">Sign Up</button>
+      </form>
     </div>
 
-
-    <!-- search results and map -->
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <div id="list">
-            <p10>Get Some Fresh Air!</p10>
-          </div>
-          <div class="row weatherWidget">
-              <div class="col-md-3" id="temperature"></div>
-              <div class="col-md-3" id="weatherInfo">
-                <div class="row" id="weatherType"></div>
-                <div class="row" id="icon"></div>
-                <div class="row" id="sunset"></div>
-              </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-          <div id="map"></div>
-        </div>
-      </div>
-     
+    <!-- message once signed in -->
+    <div class="container align-middle loggedin-Div">
+      <h4 id="welcomMsg"> Welcome user:
+        <br>
+        <p id="userWelcomeEmail"></p>
+      </h4>
+      <p id="breathe"> Breathe in some FreshAir!</p>
+      <button id="logoutBtn">Logout</button>
     </div>
+
   </div>
+
+
+
+  <!-- Modal HTML embedded directly into document -->
+  <div id="pwModal" class="modal">
+    <p>If we have this address on file, we'll send an email with a reset link to you. </p>
+    <a href="#" rel="modal:close">Close</a>
+  </div>
+
+
+
+
+
+  </div>
+
+
+  <!-- search results and map -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div id="list">
+          <p10>Get Some Fresh Air!</p10>
+        </div>
+        <div class="row weatherWidget">
+          <div class="col-md-3" id="temperature"></div>
+          <div class="col-md-3" id="weatherInfo">
+            <div class="row" id="weatherType"></div>
+            <div class="row" id="icon"></div>
+            <div class="row" id="sunset"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div id="map"></div>
+      </div>
+    </div>
+
+  </div>
+
 
 
 
