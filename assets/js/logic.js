@@ -25,7 +25,7 @@
 //     });
 //     var geocoder = new google.maps.Geocoder();
 
-
+$('.weatherWidget').hide();
     //ajax function that allows google API to work
     jQuery.ajaxPrefilter(function (options) {
         if (options.crossDomain && jQuery.support.cors) {
@@ -91,7 +91,7 @@
             const type = $('#weatherType').text(`Now there's ${response.weather[0].description} with ${response.main.humidity}% humidity`)
             const icon = $('#icon').append($(`<img src=${iconUrl0}>`).attr('alt', 'weather icon'));
             const sun = $('#sunset').text(`Today the sun sets at ${sunset}`)
-            $('.weatherWidget').attr('style', 'display: none');
+            $('.weatherWidget').hide();
             // $('.weather').append(temp, type, icon0, icon1, sun)
             console.log(lat)
             mapLat = lat;
@@ -135,6 +135,7 @@
         //listener for Back button to main list
         $(document).on("click", ".submit2", function (event) {
             runSearch()
+            $("#commentDiv").empty()
         })
         //listener ro load more results
         $(document).on("click", ".loadMore", function (event) {
@@ -184,7 +185,7 @@
             mapLon = parkNames.results[choice].geometry.location.lng
             zoomIndex = 14.5;
             initMap()
-            $('.weatherWidget').attr('style', 'display: initial');
+            $('.weatherWidget').show();
         })
 
 
