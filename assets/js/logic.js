@@ -1,9 +1,36 @@
 
-//ajax function that allows google API to work
-jQuery.ajaxPrefilter(function(options) {
-    if (options.crossDomain && jQuery.support.cors) {
-        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-    }
+function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: { lat: -34.397, lng: 150.644 }
+    });
+};
+//on click function for search button that generates results on left, map on right
+$("#searchBtn").on("click", function (event) {
+    event.preventDefault();
+    // showDiv();
+    console.log("Test1");
+})
+
+function showDiv() {
+    $("#resultsDiv").show();
+}
+
+function initAutocomplete() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: -33.91063, lng: 151.15646 },
+        zoom: 12,
+        mapTypeId: 'roadmap'
+
+    });
+    var geocoder = new google.maps.Geocoder();
+
+
+    //ajax function that allows google API to work
+    jQuery.ajaxPrefilter(function (options) {
+        if (options.crossDomain && jQuery.support.cors) {
+            options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+        }
     });
 
    //set global variables 
@@ -12,6 +39,7 @@ jQuery.ajaxPrefilter(function(options) {
         var parkId;
         var moreResults = 5;
         var resultsLength;
+        var queryUrl;
         //setting default location of map
         var mapLat = 29.76;
         var mapLon = -95.36;
@@ -33,7 +61,16 @@ jQuery.ajaxPrefilter(function(options) {
         const zip = $('#zip').val()
         console.log(zip)
         const appId = 'f767baa5bb1442ef781f01bc48fa0bec';
-        const queryUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&units=imperial&appid=${appId}`;
+
+        //checks for City or Zip
+        if (isNaN($zip)) {
+            console.log("hey")
+            var queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${$zip}&units=imperial&appid=${appId}`;
+        }
+        else {
+            var queryUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${$zip}&units=imperial&appid=${appId}`;
+        }
+
         // let lat = "";
         // let lon = "";
         $.ajax({
@@ -79,7 +116,9 @@ jQuery.ajaxPrefilter(function(options) {
                 }
                 $('#list').append(placesDiv)
                 console.log(response.results[i].name)
-                parkNames = response
+                parkNames = response;
+
+
 
                 }
         //Checks if list has been expanded to append more choices button
@@ -109,7 +148,6 @@ jQuery.ajaxPrefilter(function(options) {
     
         $(document).on('click', ".placesBox", function(event){
                 $('#list').empty()
-                
                 var choice = $(event.currentTarget).data('name')
                 parkId = parkNames.results[choice].place_id;
                 console.log(parkId)
@@ -148,18 +186,23 @@ jQuery.ajaxPrefilter(function(options) {
                 initMap()
                 $('.weatherWidget').attr('style', 'display: initial');
                 }) 
-            }
+            
+
+        }
         
 
 
 //function to update markers on the map
         function initMap() {
         // The location of Uluru
-        var uluru = {lat: mapLat, lng: mapLon};
+        var uluru = { lat: mapLat, lng: mapLon };
         //console.log(mapLat)
         // The map, centered at Uluru
         var map = new google.maps.Map(
         document.getElementById('map'), {zoom: zoomIndex, center: uluru});
         // The marker, positioned at Uluru
+
         var marker = new google.maps.Marker({position: uluru, map: map});
         }
+
+

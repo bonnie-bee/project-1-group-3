@@ -20,6 +20,10 @@
 
         #uploader {
             -webkit-appearance: none;
+<<<<<<< HEAD:userPics/parkPictures.html
+<<<<<<< HEAD
+=======
+>>>>>>> master:htmlPages/parkPictures.html
             width: 50%;
             margin-bottom: 10px;
         }
@@ -28,6 +32,15 @@
             width: 100px;
             height: 100px;
         }
+<<<<<<< HEAD:userPics/parkPictures.html
+=======
+            appearance: none;
+            width: 50%;
+            margin-bottom: 10px;
+        }
+>>>>>>> weatherWidget
+=======
+>>>>>>> master:htmlPages/parkPictures.html
     </style>
 
 </head>
@@ -37,7 +50,14 @@
 
     <progress value="0" max="100" id="uploader">0%</progress>
     <input type="file" value="upload" id="fileButton" />
+<<<<<<< HEAD:userPics/parkPictures.html
+<<<<<<< HEAD
     <div class="images"></div>
+=======
+>>>>>>> weatherWidget
+=======
+    <div class="images"></div>
+>>>>>>> master:htmlPages/parkPictures.html
 
 
     <!-- bootstrap, jquery scripts-->
@@ -74,6 +94,11 @@
             //get file
             let file = e.target.files[0];
 
+<<<<<<< HEAD:userPics/parkPictures.html
+<<<<<<< HEAD
+
+=======
+>>>>>>> master:htmlPages/parkPictures.html
             // create storage ref
             let storageRef = firebase.storage().ref(`park_image/${file.name}`);
             let name = file.name;
@@ -82,6 +107,16 @@
             let databaseRef = firebase.database().ref();
             let pushToDatabase = databaseRef.child('park').push({ picName: name })
 
+<<<<<<< HEAD:userPics/parkPictures.html
+            
+=======
+            // create storage ref
+            let storageRef = firebase.storage().ref(`park_image/${file.name}`);
+>>>>>>> weatherWidget
+
+
+=======
+>>>>>>> master:htmlPages/parkPictures.html
             //upload file
             let task = storageRef.put(file);
 
@@ -94,6 +129,10 @@
                 },
 
                 function error(err) {
+<<<<<<< HEAD:userPics/parkPictures.html
+<<<<<<< HEAD
+=======
+>>>>>>> master:htmlPages/parkPictures.html
                     console.log(error)
                 }
 
@@ -126,6 +165,30 @@
                 console.log(error);
             })
         })
+<<<<<<< HEAD:userPics/parkPictures.html
+=======
+
+                },
+
+                function complete() {
+
+                }
+
+            )
+        })
+
+
+
+
+
+>>>>>>> weatherWidget
+
+
+
+
+
+=======
+>>>>>>> master:htmlPages/parkPictures.html
 
     </script>
     <!-- </div> -->
