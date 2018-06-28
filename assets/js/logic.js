@@ -34,6 +34,7 @@ jQuery.ajaxPrefilter(function(options) {
         const $zip = $('#zip').val()
         console.log($zip)
         const appId = 'f767baa5bb1442ef781f01bc48fa0bec';
+        //checks for City or Zip
         if (isNaN($zip)) {
             console.log("hey")
             var queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${$zip}&units=imperial&appid=${appId}`;
