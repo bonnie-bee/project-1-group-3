@@ -11,6 +11,7 @@
     crossorigin="anonymous">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
     crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="assets/css/indexStyle.css">
   <link rel='stylesheet' href="assets/css/signInPage.css">
   <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
@@ -23,10 +24,12 @@
   <!-- Header with map search bar -->
   <div id="jumbotron" class="jumbotron jumbotron-fluid">
     <div class="row">
+
       <div class="col-md-1"></div>
       <div class="col-md-4">
         <h1 class="display-4 appTitle">FreshAir<i class="fa fa-tree" style="font-size:60px;"></i></h1>
         <p><a>Find parks near you!</a></p>
+
         <nav id="nav" class="navbar navbar-nav navbar-expand-lg navbar-light navbar-toggler">
           <form class="form-inline">
             <input class="form-control mr-sm-2" id='zip' type="search" placeholder="Zip Code or City..." aria-label="Search">
@@ -34,45 +37,60 @@
           </form>
         </nav>
       </div>
-      <div class="col-md-2"></div>
-      <!-- User sign up/log in -->
-      <div class="col-md-4 signForm">
-        <form id="formEl" class="align-right">
-          <!-- <div class="form-group hideForNow">
+
+      <div class="col-md-4"></div>
+      <!-- sign in/sign up button -->
+      <a href="#signInModal" rel="modal:open">
+        <button type="button" class="btn btn-outline-success" id="signModal">
+          Sign In | Sign Up
+        </button>
+      </a>
+    </div>
+  </div>
+
+
+
+  <!-- User sign up/log in modal-->
+  <div class="col-md-4">
+    <div id="signInModal" class="modal">
+      <form id="formEl" class="align-right">
+        <!-- <div class="form-group hideForNow">
+
         <label for="forUsername">Username</label>
         <input type="email" class="form-control" id="usernameInput" aria-describedby="emailHelp" placeholder="Username">
       </div> -->
-          <div class="form-group loginDiv">
-            <!--Note to self - I took out the class='hideForNow' for the label tag bc I want to test out the email/pw login; firebase doesn't have 'usernames' as a listed option for user authentication -->
+        <div class="form-group loginDiv">
+          <!--Note to self - I took out the class='hideForNow' for the label tag bc I want to test out the email/pw login; firebase doesn't have 'usernames' as a listed option for user authentication -->
 
-            <!-- enter email -->
-            <div class="form-group " id="emailDiv">
-              <label for="forEmailInput" class="">Email:</label>
-              <input type="email" class="form-control " id="emailInput" aria-describedby="emailHelp" placeholder="Enter email">
-              <small id="newUserMsg" class="form-text text-muted ">
-                <b>New Users:</b>Enter your email and create a password on
-                <i>this page</i> before clicking 'Sign Up'.</small>
-              <small id="verifyEmail" class="form-text text-muted ">Type in email to verify account</small>
-            </div>
-
-            <!-- enter password -->
-            <label id="pwLabel" for="forEmailPw">Password:</label>
-            <input type="password" class="form-control" id="passwordInput" placeholder="Password">
-            <button type="button" class="btn btn-primary" id="resetPW">Forgot password?</button>
-            <br>
-
+          <!-- enter email -->
+          <div class="form-group " id="emailDiv">
+            <label for="forEmailInput" class="">Email:</label>
+            <input type="email" class="form-control " id="emailInput" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="newUserMsg" class="form-text text-muted ">
+              <b>New Users:</b>Enter your email and create a password on
+              <i>this page</i> before clicking 'Sign Up'.</small>
+            <small id="verifyEmail" class="form-text text-muted ">Type in email to verify account</small>
           </div>
 
-          <!-- submit buttons -->
-          <button type="submit" class="btn btn-success" id="signInBtn">Submit</button>
-          <button type="submit" class="btn btn-success" id="sendEmailVerification">Submit</button>
-          <button type="submit" class="btn btn-success" id="createLoginBtn">Sign Up</button>
-        </form>
-      </div>
-      <br>
-      <div class="col-md-1"></div>
+          <!-- enter password -->
+          <label id="pwLabel" for="forEmailPw">Password:</label>
+          <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+          <button type="button" class="btn btn-primary" id="resetPW">
+            <a href="#pwModal" rel="modal:open">Forgot password?</a>
+          </button>
+          <br>
 
-     <!-- message once signed in -->
+        </div>
+
+
+        <!-- submit buttons -->
+        <button type="submit" class="btn btn-success" id="signInBtn">Submit</button>
+        <button type="submit" class="btn btn-success" id="sendEmailVerification">Submit</button>
+        <button type="submit" class="btn btn-success" id="createLoginBtn">Sign Up</button>
+      </form>
+    </div>
+
+    <!-- message once signed in -->
     <div class="container align-middle loggedin-Div">
       <h4 id="welcomMsg"> Welcome user:
         <br>
@@ -86,6 +104,19 @@
 
 
 
+  <!-- Modal HTML embedded directly into document -->
+  <div id="pwModal" class="modal">
+    <p>If we have this address on file, we'll send an email with a reset link to you. </p>
+    <a href="#" rel="modal:close">Close</a>
+  </div>
+
+
+
+
+
+  </div>
+
+
   <!-- search results and map -->
 
   <div class="container">
@@ -94,13 +125,28 @@
         <div id="list">
           <p10>Get Some Fresh Air!</p10>
         </div>
+        <div class="row weatherWidget">
+          <div class="col-md-3" id="temperature"></div>
+          <div class="col-md-3" id="weatherInfo">
+            <div class="row" id="weatherType"></div>
+            <div class="row" id="icon"></div>
+            <div class="row" id="sunset"></div>
+          </div>
+        </div>
       </div>
-
       <div class="col-md-6">
         <div id="map"></div>
       </div>
-
     </div>
+
+  </div>
+
+
+
+
+
+
+
   </div>
 
 
@@ -113,25 +159,30 @@
 
 
 
-
-
-
-
+  <!-- firebase -->
   <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+  <!-- moment -->
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-
+  <!-- jquery -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
+  <!-- popper for dropdowns in bootstrap -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>
+  <!-- bootstrap -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
     crossorigin="anonymous"></script>
+  <!-- google maps -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB23WGSpk5GXU08ByGkA6lGMwEJ8OEOXRw&callback=initMap"></script>
-
+  <!-- google api -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-  <script src="assets/js/indexLogic.js"></script>
+  <!-- jquery modal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <!-- our javascript -->
   <script src="assets/js/signInPage.js"></script>
   <script src="assets/js/logic.js"></script>
+
+
 </body>
 
 </html>

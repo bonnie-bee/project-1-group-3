@@ -1,9 +1,36 @@
 
-//ajax function that allows google API to work
-jQuery.ajaxPrefilter(function(options) {
-    if (options.crossDomain && jQuery.support.cors) {
-        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-    }
+function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: { lat: -34.397, lng: 150.644 }
+    });
+};
+//on click function for search button that generates results on left, map on right
+$("#searchBtn").on("click", function (event) {
+    event.preventDefault();
+    // showDiv();
+    console.log("Test1");
+})
+
+function showDiv() {
+    $("#resultsDiv").show();
+}
+
+function initAutocomplete() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: -33.91063, lng: 151.15646 },
+        zoom: 12,
+        mapTypeId: 'roadmap'
+
+    });
+    var geocoder = new google.maps.Geocoder();
+
+
+    //ajax function that allows google API to work
+    jQuery.ajaxPrefilter(function (options) {
+        if (options.crossDomain && jQuery.support.cors) {
+            options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+        }
     });
 
    //set global variables 
@@ -31,9 +58,10 @@ jQuery.ajaxPrefilter(function(options) {
         // empty out the set of previous icons
         $('#icon').empty();
         //set up the ajax query for the weather api
-        const $zip = $('#zip').val()
-        console.log($zip)
+        const zip = $('#zip').val()
+        console.log(zip)
         const appId = 'f767baa5bb1442ef781f01bc48fa0bec';
+
         //checks for City or Zip
         if (isNaN($zip)) {
             console.log("hey")
@@ -42,6 +70,7 @@ jQuery.ajaxPrefilter(function(options) {
         else {
             var queryUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${$zip}&units=imperial&appid=${appId}`;
         }
+
         // let lat = "";
         // let lon = "";
         $.ajax({
@@ -56,11 +85,13 @@ jQuery.ajaxPrefilter(function(options) {
             let sunset = moment.unix(response.sys.sunset).format('h:mm')
             let lat = response.coord.lat;
             let lon = response.coord.lon;
+            $('#icon').empty();
             //grab the weather info and put it in the widget
             const temp = $('#temperature').text(`${Math.round(response.main.temp)}°`)
-            const type = $('#weatherType').text(`Right now there's ${response.weather[0].description} with ${response.main.humidity}% humidity`)
+            const type = $('#weatherType').text(`Now there's ${response.weather[0].description} with ${response.main.humidity}% humidity`)
             const icon = $('#icon').append($(`<img src=${iconUrl0}>`).attr('alt', 'weather icon'));
-            const sun = $('#sunset').text(`The sun will set at ${sunset}`)
+            const sun = $('#sunset').text(`Today the sun sets at ${sunset}`)
+            $('.weatherWidget').attr('style', 'display: none');
             // $('.weather').append(temp, type, icon0, icon1, sun)
             console.log(lat)
             mapLat = lat;
@@ -153,6 +184,7 @@ jQuery.ajaxPrefilter(function(options) {
                 mapLon = parkNames.results[choice].geometry.location.lng
                 zoomIndex = 14.5;
                 initMap()
+                $('.weatherWidget').attr('style', 'display: initial');
                 }) 
             
 
@@ -163,12 +195,14 @@ jQuery.ajaxPrefilter(function(options) {
 //function to update markers on the map
         function initMap() {
         // The location of Uluru
-        var uluru = {lat: mapLat, lng: mapLon};
+        var uluru = { lat: mapLat, lng: mapLon };
         //console.log(mapLat)
         // The map, centered at Uluru
         var map = new google.maps.Map(
         document.getElementById('map'), {zoom: zoomIndex, center: uluru});
         // The marker, positioned at Uluru
+
         var marker = new google.maps.Marker({position: uluru, map: map});
         }
+
 
