@@ -27,8 +27,12 @@
 
       <div class="col-md-1"></div>
       <div class="col-md-4">
-        <h1 class="display-4 appTitle">FreshAir<i class="fa fa-tree" style="font-size:60px;"></i></h1>
-        <p><a>Find parks near you!</a></p>
+        <h1 class="display-4 appTitle">FreshAir
+          <i class="fa fa-tree" style="font-size:60px;"></i>
+        </h1>
+        <p>
+          <a>Find parks near you!</a>
+        </p>
 
         <nav id="nav" class="navbar navbar-nav navbar-expand-lg navbar-light navbar-toggler">
           <form class="form-inline">
@@ -114,30 +118,43 @@
 
 
 
-  </div>
+  <!-- </div> -->
 
 
   <!-- search results and map -->
 
   <div class="container">
+
+
     <div class="row">
       <div class="col-md-6">
         <div id="list">
           <p10>Get Some Fresh Air!</p10>
         </div>
-        <div class="row weatherWidget">
-          <div class="col-md-3" id="temperature"></div>
-          <div class="col-md-3" id="weatherInfo">
-            <div class="row" id="weatherType"></div>
-            <div class="row" id="icon"></div>
-            <div class="row" id="sunset"></div>
-          </div>
-          <div class="container col-md-3" id="commentDiv"></div>
-        </div>
       </div>
       <div class="col-md-6">
         <div id="map"></div>
       </div>
+    </div>
+
+
+    <div class="row weatherWidget">
+      <div class="col-md-3" id="weatherInfo">
+      <div class="row" id="temperature"></div>
+        <div class="row" id="weatherType"></div>
+        <div class="row" id="icon"></div>
+        <div class="row" id="sunset"></div>
+      </div>
+
+      <div class="container col-md-3" id="commentDiv">
+      </div>
+
+      <div class="col-md-3 uploadPhoto">
+        <progress value="0" max="100" id="uploader">0%</progress>
+        <input type="file" value="upload" id="fileButton" />
+        <div class="container images"></div>
+      </div>
+      
     </div>
 
   </div>

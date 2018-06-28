@@ -9,6 +9,8 @@ var config = {
   };
   firebase.initializeApp(config);
 var database = firebase.database();
+
+
 //This snippet was taken directly from the Firebase documentation
 //It is an observer and it checks to see if a user is currently 
 //logged into the app
@@ -20,7 +22,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         //Instead, show the welcome message
             $("#formEl").hide()
             $("#userWelcomeEmail").text(user.email)
-            $(".loggedin-Div").show()
+            $(".loggedin-Div").show
             console.log('Email is verified');
         
              $(document).on('click', ".placesBox", function(event){      
@@ -36,6 +38,9 @@ firebase.auth().onAuthStateChanged(function(user) {
                         $("#commentDiv").append(cmtBoxContDiv)
                         $("#commentDiv").append(inputBox)
                         $("#commentDiv").append($("<div>").append(commentSubmitBtn)) 
+                        
+                        addPhoto();
+                        
                         
                         //Firebase comments code begins here 
                         //Display any comments that might be stored in Firebase
@@ -55,6 +60,8 @@ firebase.auth().onAuthStateChanged(function(user) {
                                     //console.log('this is the values: '+ values);
                                     $("#commentDiv").append($('<div class="commentz">').append(values))
                                     })     
+                                    
+                                    seePhoto();
                         
                         } else {
                             //console.log("this parkName obj does NOT exists")
@@ -67,6 +74,8 @@ firebase.auth().onAuthStateChanged(function(user) {
                             frbParkObjsRef.child('parkName:'+ parkId + '/pictures').set(
                                 {pictures: 0})
                              }
+                            //  seePhoto();
+                             
                 })
         //Firebase comments code ends  here
             
@@ -118,6 +127,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                     // $("#commentDiv").append(inputBox)
                     //$("#commentDiv").append($("<div>").append(commentSubmitBtn)) 
                     
+                    
                     //Firebase comments code begins here 
                     //Display any comments that might be stored in Firebase
                 database.ref().once("value", function(snapshot) {
@@ -135,7 +145,8 @@ firebase.auth().onAuthStateChanged(function(user) {
                             Object.values(storedComments).forEach(function(values){
                                 //console.log('this is the values: '+ values);
                                 $("#commentDiv").append($('<div class="commentz">').append(values))
-                                })     
+                                })    
+                                seePhoto() 
                     
                     } else {
                         //console.log("this parkName obj does NOT exists")
@@ -148,6 +159,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                         frbParkObjsRef.child('parkName:'+ parkId + '/pictures').set(
                             {pictures: 0})
                          }
+                         
             })
     //Firebase comments code ends  here
         
@@ -334,3 +346,63 @@ $("#resetPW").on("click", function(event){
           window.alert("Error: " + error)
         });       
     })
+
+    function addPhoto (){
+        //get elements
+        const uploader = document.getElementById('uploader');
+        const fileButton = document.getElementById('fileButton')
+        //listen for file selection
+        fileButton.addEventListener('change', function (e) {
+            //get file
+            let file = e.target.files[0];
+            // create storage ref
+            let storageRef = firebase.storage().ref(`${parkId}/${file.name}`);
+            let name = file.name;
+            //create databse ref and push name database
+            let databaseRef = firebase.database().ref();
+            let pushToDatabase = databaseRef.child(`${parkId}`).push({ picName: name })
+            //upload file
+            let task = storageRef.put(file);
+            //update progress bar
+            task.on('state_changed',
+                function progress(snapshot) {
+                    let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    uploader.value = percentage;
+                },
+                function error(err) {
+                    console.log(error)
+                }
+            )
+        })
+    }
+
+    function seePhoto() {
+        $('.images').empty()
+        let databaseRef = firebase.database().ref();
+
+        databaseRef.child(`${parkId}`).on('child_added', function (snapshot) {
+            let picName = snapshot.val().picName;
+            console.log(picName)
+
+            let storage = firebase.storage();
+            let storageRef = storage.ref();
+            let imagesRef = storageRef.child(`${parkId}/${picName}`);
+            // let imagesRef = storage.refFromURL('gs://freshairp1-64c68.appspot.com/park_image')
+
+            console.log(imagesRef)
+
+            // imagesRef.getMetadata().then(function (metadata) {
+            //     console.log(metadata)
+            // })
+
+            imagesRef.getDownloadURL().then(function (url) {
+                console.log(url);
+                let newImgUrl = $('<img>').addClass('img-fluid parkPics').attr('src', url);
+                $('.images').append(newImgUrl)
+
+            }).catch(function (error) {
+                console.log(error);
+            })
+        })
+
+    }
