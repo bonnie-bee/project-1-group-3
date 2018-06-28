@@ -24,16 +24,20 @@
   <!-- Header with map search bar -->
   <div id="jumbotron" class="jumbotron jumbotron-fluid">
     <div class="row">
-      <div class="col-md-4 logo">
-        <h1 class="display-4">FreshAir</h1>
-        <p>Find parks near you!</p>
+
+      <div class="col-md-1"></div>
+      <div class="col-md-4">
+        <h1 class="display-4 appTitle">FreshAir<i class="fa fa-tree" style="font-size:60px;"></i></h1>
+        <p><a>Find parks near you!</a></p>
+
         <nav id="nav" class="navbar navbar-nav navbar-expand-lg navbar-light navbar-toggler">
           <form class="form-inline">
-            <input class="form-control mr-sm-2" id='zip' type="search" placeholder="Zip Code..." aria-label="Search">
+            <input class="form-control mr-sm-2" id='zip' type="search" placeholder="Zip Code or City..." aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0 submit" id="submit" type="submit">Search</button>
           </form>
         </nav>
       </div>
+
       <div class="col-md-4"></div>
       <!-- sign in/sign up button -->
       <a href="#signInModal" rel="modal:open">
@@ -51,6 +55,7 @@
     <div id="signInModal" class="modal">
       <form id="formEl" class="align-right">
         <!-- <div class="form-group hideForNow">
+
         <label for="forUsername">Username</label>
         <input type="email" class="form-control" id="usernameInput" aria-describedby="emailHelp" placeholder="Username">
       </div> -->
@@ -76,6 +81,7 @@
           <br>
 
         </div>
+
 
         <!-- submit buttons -->
         <button type="submit" class="btn btn-success" id="signInBtn">Submit</button>

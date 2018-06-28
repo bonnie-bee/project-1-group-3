@@ -39,6 +39,7 @@ function initAutocomplete() {
         var parkId;
         var moreResults = 5;
         var resultsLength;
+        var queryUrl;
         //setting default location of map
         var mapLat = 29.76;
         var mapLon = -95.36;
@@ -60,7 +61,16 @@ function initAutocomplete() {
         const zip = $('#zip').val()
         console.log(zip)
         const appId = 'f767baa5bb1442ef781f01bc48fa0bec';
-        const queryUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&units=imperial&appid=${appId}`;
+
+        //checks for City or Zip
+        if (isNaN($zip)) {
+            console.log("hey")
+            var queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${$zip}&units=imperial&appid=${appId}`;
+        }
+        else {
+            var queryUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${$zip}&units=imperial&appid=${appId}`;
+        }
+
         // let lat = "";
         // let lon = "";
         $.ajax({
@@ -106,7 +116,9 @@ function initAutocomplete() {
                 }
                 $('#list').append(placesDiv)
                 console.log(response.results[i].name)
-                parkNames = response
+                parkNames = response;
+
+
 
                 }
         //Checks if list has been expanded to append more choices button
@@ -136,7 +148,6 @@ function initAutocomplete() {
     
         $(document).on('click', ".placesBox", function(event){
                 $('#list').empty()
-                
                 var choice = $(event.currentTarget).data('name')
                 parkId = parkNames.results[choice].place_id;
                 console.log(parkId)
@@ -175,7 +186,9 @@ function initAutocomplete() {
                 initMap()
                 $('.weatherWidget').attr('style', 'display: initial');
                 }) 
-            }
+            
+
+        }
         
 
 
@@ -188,6 +201,8 @@ function initAutocomplete() {
         var map = new google.maps.Map(
         document.getElementById('map'), {zoom: zoomIndex, center: uluru});
         // The marker, positioned at Uluru
-        var marker = new google.maps.Marker({ position: uluru, map: map });
-    }
-}
+
+        var marker = new google.maps.Marker({position: uluru, map: map});
+        }
+
+
