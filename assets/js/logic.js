@@ -75,11 +75,13 @@ function initAutocomplete() {
             let sunset = moment.unix(response.sys.sunset).format('h:mm')
             let lat = response.coord.lat;
             let lon = response.coord.lon;
+            $('#icon').empty();
             //grab the weather info and put it in the widget
             const temp = $('#temperature').text(`${Math.round(response.main.temp)}°`)
-            const type = $('#weatherType').text(`Right now there's ${response.weather[0].description} with ${response.main.humidity}% humidity`)
+            const type = $('#weatherType').text(`Now there's ${response.weather[0].description} with ${response.main.humidity}% humidity`)
             const icon = $('#icon').append($(`<img src=${iconUrl0}>`).attr('alt', 'weather icon'));
-            const sun = $('#sunset').text(`The sun will set at ${sunset}`)
+            const sun = $('#sunset').text(`Today the sun sets at ${sunset}`)
+            $('.weatherWidget').attr('style', 'display: none');
             // $('.weather').append(temp, type, icon0, icon1, sun)
             console.log(lat)
             mapLat = lat;
@@ -171,7 +173,7 @@ function initAutocomplete() {
                 mapLon = parkNames.results[choice].geometry.location.lng
                 zoomIndex = 14.5;
                 initMap()
-                $('.weatherWidget').attr('class', 'weatherWidgetDisplay');
+                $('.weatherWidget').attr('style', 'display: initial');
                 }) 
             }
         
