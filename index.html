@@ -23,19 +23,20 @@
   <!-- Header with map search bar -->
   <div id="jumbotron" class="jumbotron jumbotron-fluid">
     <div class="row">
+      <div class="col-md-1"></div>
       <div class="col-md-4">
-        <h1 class="display-4">FreshAir</h1>
-        <p>Find parks near you!</p>
+        <h1 class="display-4 appTitle">FreshAir</h1>
+        <p><a>Find parks near you!</a></p>
         <nav id="nav" class="navbar navbar-nav navbar-expand-lg navbar-light navbar-toggler">
           <form class="form-inline">
-            <input class="form-control mr-sm-2" id='zip' type="search" placeholder="Zip Code..." aria-label="Search">
+            <input class="form-control mr-sm-2" id='zip' type="search" placeholder="Zip Code or City..." aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0 submit" id="submit" type="submit">Search</button>
           </form>
         </nav>
       </div>
-      <div class="col-md-4"></div>
+      <div class="col-md-2"></div>
       <!-- User sign up/log in -->
-      <div class="col-md-4">
+      <div class="col-md-4 signForm">
         <form id="formEl" class="align-right">
           <!-- <div class="form-group hideForNow">
         <label for="forUsername">Username</label>
@@ -68,6 +69,8 @@
           <button type="submit" class="btn btn-success" id="createLoginBtn">Sign Up</button>
         </form>
       </div>
+      <br>
+      <div class="col-md-1"></div>
 
      <!-- message once signed in -->
     <div class="container align-middle loggedin-Div">

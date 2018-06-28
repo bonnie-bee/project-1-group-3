@@ -113,3 +113,18 @@ p7{
     font-family: 'Nanum Gothic', sans-serif;
     font-size: 14px;
 }
+
+.signForm{
+    margin:auto;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+.display-4{
+    font-size: 70px;
+    text-decoration: underline dotted  #53A351;
+}
+
+a{
+    font-family: 'Nanum Gothic', sans-serif;
+}
